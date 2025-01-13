@@ -224,16 +224,25 @@
             "name": "super_maxi_vaisseau",
             "type": "guerre",
             "condition": "opérationnel",
-            "crew": [
-                {
-                    "first_name": "aqw",
-                    "last_name": "aqw",
-                    "gender": "M",
-                    "age": 45,
-                    "role": "Pilote",
-                    "experience": 45
-                }
-            ]
+            "crew": []
+        },
+        {
+            "name": "test",
+            "type": "marchand",
+            "condition": "opérationnel",
+            "crew": []
+        },
+        {
+            "name": "zouzouzou",
+            "type": "marchand",
+            "condition": "opérationnel",
+            "crew": []
+        },
+        {
+            "name": "asasasas",
+            "type": "marchand",
+            "condition": "opérationnel",
+            "crew": []
         }
     ]
 }

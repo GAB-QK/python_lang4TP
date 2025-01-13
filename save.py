@@ -13,43 +13,24 @@ def save_data(fleet: Fleet, file_name: str) -> None:
         "spaceships": existing_data["spaceships"]
     }
 
-    existing_spaceship_names = {spaceship["name"] for spaceship in existing_data["spaceships"]} 
+    existing_spaceship_names = {spaceship["name"] for spaceship in existing_data["spaceships"]}
 
-    for spaceship in fleet.spaceships:
-        if spaceship.name not in existing_spaceship_names: # New spaceship
+    for spaceship in fleet.spaceships: 
+        if spaceship.name not in existing_spaceship_names: # if the spaceship is not in the existing data add it
             spaceship_data = {
                 "name": spaceship.name,
                 "type": spaceship.type,
                 "condition": spaceship.condition,
                 "crew": []
             }
-            for member in spaceship.crew:   # Add crew members
-                if isinstance(member, Operator):
-                    member_data = {
-                        "first_name": member.first_name,
-                        "last_name": member.last_name,
-                        "gender": member.gender,
-                        "age": member.age,
-                        "role": member.role,
-                        "experience": member.experience
-                    }
-                else:
-                    member_data = {
-                        "first_name": member.first_name,
-                        "last_name": member.last_name,
-                        "gender": member.gender,
-                        "age": member.age,
-                        "mana": member.mana
-                    }
-                spaceship_data["crew"].append(member_data)
             data["spaceships"].append(spaceship_data)
-        else:
-            for existing_spaceship in data["spaceships"]: 
-                if existing_spaceship["name"] == spaceship.name:
+        else:                                             # if the spaceship is in the existing data, update the crew members     
+            for existing_spaceship in data["spaceships"]:
+                if existing_spaceship["name"] == spaceship.name: #
                     existing_member_names = {member["last_name"] for member in existing_spaceship["crew"]}
                     for member in spaceship.crew:
                         if member.last_name not in existing_member_names:
-                            if isinstance(member, Operator): 
+                            if isinstance(member, Operator):
                                 member_data = {
                                     "first_name": member.first_name,
                                     "last_name": member.last_name,
@@ -57,14 +38,6 @@ def save_data(fleet: Fleet, file_name: str) -> None:
                                     "age": member.age,
                                     "role": member.role,
                                     "experience": member.experience
-                                }
-                            else:
-                                member_data = {
-                                    "first_name": member.first_name,
-                                    "last_name": member.last_name,
-                                    "gender": member.gender,
-                                    "age": member.age,
-                                    "mana": member.mana
                                 }
                             existing_spaceship["crew"].append(member_data)
 
@@ -80,7 +53,7 @@ def load_data(file_name: str) -> Fleet:
             spaceship = Spaceship(spaceship_data['name'], spaceship_type)
             spaceship.condition = spaceship_data['condition']
             for member_data in spaceship_data['crew']:
-                if 'role' in member_data and member_data['role'] in Operator.POSSIBLE_ROLES:
+                if 'role' in member_data and member_data['role'] in Operator.POSSIBLE_ROLES: # load Operator or Mentalist
                     member = Operator(
                         member_data['first_name'],
                         member_data['last_name'],
@@ -88,8 +61,8 @@ def load_data(file_name: str) -> Fleet:
                         member_data['age'],
                         member_data['role']
                     )
-                    member.experience = member_data['experience']
-                else:
+                    member.experience = member_data['experience'] 
+                else: 
                     member = Mentalist(
                         member_data['first_name'],
                         member_data['last_name'],
@@ -97,8 +70,8 @@ def load_data(file_name: str) -> Fleet:
                         member_data['age']
                     )
                     member.mana = member_data.get('mana', 100) 
-                spaceship.add_member(member)
-            fleet.add_spaceship(spaceship)
+                spaceship.add_member(member) # read the member associate to the spaceship
+            fleet.add_spaceship(spaceship)  # read the spaceship associate to the fleet
         return fleet
 
 def read_data(file_name: str) -> Fleet:

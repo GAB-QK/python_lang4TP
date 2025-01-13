@@ -11,17 +11,24 @@ colors = {
 
 
 class Person:
+    '''
+    basic class for a person
+    '''
     def __init__(self, first_name: str, last_name: str, gender: str, age: int) -> None:
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
         self.age = age
 
-    def introduce_yourself(self) -> str:
+    def introduce_yourself(self) -> str: # introduce the person
         return f"Bonjour, je m'appelle {self.first_name} {self.last_name}, je suis {self.gender} et j'ai {self.age} ans"
 
 
 class Operator(Person):
+    '''
+    class for an operator, inherits from Person
+    feel free to add more roles and actions !
+    '''
     POSSIBLE_ROLES = [
         "Commandant",
         "Technicien",
@@ -48,21 +55,24 @@ class Operator(Person):
         self.role = role
         self.experience = experience
 
-    def act(self) -> str:
+    def act(self) -> str: # perform a random action
         action = random.choice(self.FUNNY_ACTIONS)
         return f"{action}"
 
-    def gain_experience(self) -> str:
+    def gain_experience(self) -> str: # gain experience
         self.experience += 1
         return f"{self.first_name} {self.last_name} a maintenant {self.experience} niveau d'expérience"
 
 
 class Mentalist(Person):
+    '''
+    class for a mentalist, inherits from Person
+    '''
     def __init__(self, first_name: str, last_name: str, gender: str, age: int, mana: int = 100) -> None:
         super().__init__(first_name, last_name, gender, age)
         self.mana = mana
 
-    def act(self, target: Operator) -> str:
+    def act(self, target: Operator) -> str: # use the mentalist powers to influence an operator
         if self.mana >= 20:
             self.mana -= 20
             action = target.act()
@@ -70,12 +80,15 @@ class Mentalist(Person):
         else:
             return f"{self.first_name} {self.last_name} n'a pas assez de mana pour agir"
 
-    def recharge_mana(self) -> str:
+    def recharge_mana(self) -> str: # recharge the mana of the mentalist
         self.mana = min(self.mana + 50, 100)
         return f"{self.first_name} {self.last_name} a rechargé son mana !!! Mana actuel: {self.mana}"
 
 
 class Spaceship:
+    '''
+    class for a spaceship
+    '''
     POSSIBLE_TYPES = ["transport", "guerre", "marchand"]
     POSSIBLE_CONDITIONS = ["opérationnel", "endommagé"]
 
@@ -89,13 +102,13 @@ class Spaceship:
         self.crew = []
         self.condition = condition
 
-    def add_member(self, person: Person) -> str:
+    def add_member(self, person: Person) -> str: # add a member to the crew
         if len(self.crew) >= 10:
             return "Capacité maximale de l'équipage"
         self.crew.append(person)
         return f"{person.first_name} {person.last_name} a été ajouté à l'équipage"
 
-    def check_preparation(self) -> bool:
+    def check_preparation(self) -> bool: # check if the spaceship is ready to take off
         has_pilot = any(
             member.role == "Pilote"
             for member in self.crew
@@ -110,17 +123,20 @@ class Spaceship:
 
 
 class Fleet:
+    '''
+    class for a fleet
+    '''
     def __init__(self, name: str) -> None:
         self.name = name
         self.spaceships = []
 
-    def add_spaceship(self, spaceship: Spaceship) -> str:
+    def add_spaceship(self, spaceship: Spaceship) -> str: # add a spaceship to the fleet
         if len(self.spaceships) >= 15:
             return "Capacité maximale de la flotte"
         self.spaceships.append(spaceship)
         return f"Le vaisseau {spaceship.name} a été ajouté à la flotte {self.name}"
 
-    def statistics(self) -> str:
+    def statistics(self) -> str: # display statistics about the fleet
         total_members = sum(len(spaceship.crew) for spaceship in self.spaceships)
         operational_ships = sum(
             1 for spaceship in self.spaceships if spaceship.condition == "opérationnel"
