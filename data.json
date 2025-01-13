@@ -1,0 +1,239 @@
+{
+    "name": "Galactic Fleet",
+    "spaceships": [
+        {
+            "name": "Bayta",
+            "type": "Marchand",
+            "condition": "Opérationnel",
+            "crew": [
+                {
+                    "first_name": "Bel",
+                    "last_name": "Riose",
+                    "gender": "M",
+                    "age": 48,
+                    "role": "Commandant",
+                    "experience": null
+                },
+                {
+                    "first_name": "Gaal",
+                    "last_name": "Dornick",
+                    "gender": "F",
+                    "age": 34,
+                    "role": "Technicien",
+                    "experience": null
+                },
+                {
+                    "first_name": "Salvor",
+                    "last_name": "Hardin",
+                    "gender": "F",
+                    "age": 28,
+                    "role": "Armurier",
+                    "experience": null
+                },
+                {
+                    "first_name": "Novi",
+                    "last_name": "Sura",
+                    "gender": "F",
+                    "age": 25,
+                    "role": "Entretien",
+                    "experience": null
+                }
+            ]
+        },
+        {
+            "name": "Dark Nebula",
+            "type": "Guerre",
+            "condition": "Endommagé",
+            "crew": [
+                {
+                    "first_name": "Hugo",
+                    "last_name": "Crast",
+                    "gender": "M",
+                    "age": 37,
+                    "role": "Pilote",
+                    "experience": null
+                },
+                {
+                    "first_name": "Han",
+                    "last_name": "Pritcher",
+                    "gender": "M",
+                    "age": 31,
+                    "role": "Armurier",
+                    "experience": null
+                },
+                {
+                    "first_name": "Hober",
+                    "last_name": "Mallow",
+                    "gender": "M",
+                    "age": 52,
+                    "role": "Pilote",
+                    "experience": null
+                },
+                {
+                    "first_name": "Jagger",
+                    "last_name": "Fount",
+                    "gender": "M",
+                    "age": 41,
+                    "role": "Pilote",
+                    "experience": null
+                },
+                {
+                    "first_name": "Tellem",
+                    "last_name": "Bond",
+                    "gender": "M",
+                    "age": 48,
+                    "role": "Mentaliste",
+                    "mana": 100
+                }
+            ]
+        },
+        {
+            "name": "Fearless",
+            "type": "Guerre",
+            "condition": "Opérationnel",
+            "crew": [
+                {
+                    "first_name": "Fallom",
+                    "last_name": "",
+                    "gender": "F",
+                    "age": 28,
+                    "role": "Pilote",
+                    "experience": null
+                },
+                {
+                    "first_name": "Lewis",
+                    "last_name": "Pirenne",
+                    "gender": "M",
+                    "age": 34,
+                    "role": "Pilote",
+                    "experience": null
+                },
+                {
+                    "first_name": "Yugo",
+                    "last_name": "Amary",
+                    "gender": "M",
+                    "age": 33,
+                    "role": "Technicien",
+                    "experience": null
+                },
+                {
+                    "first_name": "Munn",
+                    "last_name": "Compor",
+                    "gender": "M",
+                    "age": 27,
+                    "role": "Technicien",
+                    "experience": null
+                },
+                {
+                    "first_name": "Yanna",
+                    "last_name": "Seldon",
+                    "gender": "F",
+                    "age": 52,
+                    "role": "Mentaliste",
+                    "mana": 100
+                }
+            ]
+        },
+        {
+            "name": "Unimara",
+            "type": "Marchand",
+            "condition": "Opérationnel",
+            "crew": [
+                {
+                    "first_name": "Lathan",
+                    "last_name": "Devers",
+                    "gender": "M",
+                    "age": 46,
+                    "role": "Marchand",
+                    "experience": null
+                },
+                {
+                    "first_name": "Eskel",
+                    "last_name": "Gorov",
+                    "gender": "M",
+                    "age": 32,
+                    "role": "Marchand",
+                    "experience": null
+                },
+                {
+                    "first_name": "Limmar",
+                    "last_name": "Ponyets",
+                    "gender": "M",
+                    "age": 43,
+                    "role": "Marchand",
+                    "experience": null
+                },
+                {
+                    "first_name": "Stora",
+                    "last_name": "Gendibal",
+                    "gender": "F",
+                    "age": 35,
+                    "role": "Technicien",
+                    "experience": null
+                },
+                {
+                    "first_name": "Joie",
+                    "last_name": "",
+                    "gender": "F",
+                    "age": 25,
+                    "role": "Mentaliste",
+                    "mana": 100
+                }
+            ]
+        },
+        {
+            "name": "Weinis",
+            "type": "Marchand",
+            "condition": "Endommagé",
+            "crew": [
+                {
+                    "first_name": "Bayta",
+                    "last_name": "Darell",
+                    "gender": "F",
+                    "age": 48,
+                    "role": "Entretien",
+                    "experience": null
+                },
+                {
+                    "first_name": "Toran",
+                    "last_name": "Darell",
+                    "gender": "M",
+                    "age": 52,
+                    "role": "Technicien",
+                    "experience": null
+                },
+                {
+                    "first_name": "Harlan",
+                    "last_name": "Branno",
+                    "gender": "F",
+                    "age": 38,
+                    "role": "Entretien",
+                    "experience": null
+                },
+                {
+                    "first_name": "Jord",
+                    "last_name": "Commasson",
+                    "gender": "M",
+                    "age": 53,
+                    "role": "Entretien",
+                    "experience": null
+                }
+            ]
+        },
+        {
+            "name": "super_maxi_vaisseau",
+            "type": "guerre",
+            "condition": "opérationnel",
+            "crew": [
+                {
+                    "first_name": "aqw",
+                    "last_name": "aqw",
+                    "gender": "M",
+                    "age": 45,
+                    "role": "Pilote",
+                    "experience": 45
+                }
+            ]
+        }
+    ]
+}
