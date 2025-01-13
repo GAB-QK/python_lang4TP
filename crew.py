@@ -14,7 +14,7 @@ colors = {
     "Warning": "\033[93m",
 }
 
-# charge fichier data.json
+# load file data.json
 fleet = read_data("data.json")
 
 
@@ -22,7 +22,7 @@ def add_member() -> None:
     print("Bonjour ! Ajout d'un membre d'équipage:  \n")
     first_name = input("Prénom du membre d'équipage : ")
     last_name = input("Nom du membre d'équipage : ")
-    # verification du genre M / F
+    # check gender M / F
     while True:
         gender = input("Genre du membre d'équipage (M/F) : ").upper()
         if gender in ["M", "F"]:
@@ -31,7 +31,7 @@ def add_member() -> None:
             print(
                 f"{colors['Warning']}[X] Veuillez entrer 'M' pour masculin ou 'F' pour féminin {colors['Reset']}"
             )
-    # verification de l'age en int
+    # check is in int
     while True:
         try:
             age = int(input("Âge du membre d'équipage : "))
@@ -56,7 +56,7 @@ def add_member() -> None:
         except ValueError:
             print(f"{colors['Warning']}[X] Veuillez entrer un numéro valide {colors['Reset']}")
 
-    # verification de l'experience en int
+    # check experience is in int
     while True:
         try:
             experience = int(input("Années d'expérience : "))
@@ -70,7 +70,7 @@ def add_member() -> None:
         new_member = Operator(first_name, last_name, gender, age, role)
         new_member.experience = experience
 
-        # Associe le nouveau membre d'équipage à un vaisseau
+        # associate the member to a spaceship
         print("Associer le membre à un vaisseau: \n")
         print(
             f"{colors['Menu']}{'Numéro':<10} {'Nom':<20} {'Type':<15} {'Condition':<15} {'Nombre de membres':<20}{colors['Reset']}"
@@ -85,11 +85,11 @@ def add_member() -> None:
                 choice = int(input("Choisissez un vaisseau (numéro) : "))
                 if (
                     1 <= choice <= len(fleet.spaceships)
-                ):  # vérifie si le choix est valide
+                ):  # check if the choice is in the range
                     selected_spaceship = fleet.spaceships[choice - 1]
                     result = selected_spaceship.add_member(new_member)
                     print(f"{colors['Success']}[/] {result}{colors['Reset']}")
-                    save_data(fleet, "data.json")  # sauvegarde les données
+                    save_data(fleet, "data.json")  # save the updated fleet data
                     break
                 else:
                     print(
@@ -114,25 +114,25 @@ def multi_check_member(first_name: str, last_name: str, age: int, role: str) -> 
                 if member.last_name.lower() == last_name.lower():
                     raise ValueError(
                         "Un des membres d'équipage a déjà ce nom de famille"
-                    )  # vérifie si le nom de famille est déjà utilisé
+                    )  # check if the last name is already in use
 
         if (
             age < 18 and role.lower() == "technicien"
-        ):  # vérifie si l'age est valide pour le rôle technicien
+        ):  # check if the age is valid for the technician role
             raise ValueError(
                 "Ce membre d'équipage est trop jeune pour être technicien ! "
             )
         if (
             age < 25 and role.lower() == "pilote"
-        ):  # vérifie si l'age est valide pour le rôle pilote
+        ):  # check if the age is valid for the pilot role
             raise ValueError("Ce membre d'équipage est trop jeune pour être Pilote ! ")
         if age > 65:
-            raise ValueError(  # vérifie si le membre d'équipage est trop vieux
+            raise ValueError(  # check if the age is valid for the crew member
                 "Ce membre d'équipage est trop vieux pour faire partie de l'équipage ! "
             )
-        if not (3 <= len(first_name) <= 15):
+        if not (3 <= len(first_name) <= 15): # check if the first name and last name are valid between 3 and 15 characters max
             raise ValueError("Le prénom doit contenir entre 3 et 15 caractères")
-        if not (3 <= len(last_name) <= 15):
+        if not (3 <= len(last_name) <= 15): # check if the first name and last name are valid between 3 and 15 characters max
             raise ValueError("Le nom doit contenir entre 3 et 15 caractères")
     except ValueError as e:
         print(f"{colors['Error']}[!] {e}{colors['Reset']}")
@@ -149,7 +149,7 @@ def delete_member() -> None:
     with open("data.json", "r", encoding="utf-8") as file:
         data = json.load(file)
 
-    for spaceship in data["spaceships"]:
+    for spaceship in data["spaceships"]: # check if the member is in the crew
         for member in spaceship["crew"]:
             if member["last_name"].lower() == last_name.lower():
                 spaceship["crew"].remove(member)
@@ -195,7 +195,7 @@ def display_crew() -> None:
             )
 
 
-def check_crew() -> None:
+def check_crew() -> None: # check if the crew is ready for the mission
     for spaceship in fleet.spaceships:
         if spaceship.check_preparation():
             print(
@@ -207,7 +207,7 @@ def check_crew() -> None:
             )
 
 
-def rand_intrusion_in_board() -> bool:
+def rand_intrusion_in_board() -> bool: # simulate an intrusion in the spaceship
     for _ in range(1000):
         print(f"{colors['Error']}[!] Intrusion détectée !{colors['Reset']} " * 3)
         time.sleep(0.3)
@@ -216,7 +216,7 @@ def rand_intrusion_in_board() -> bool:
     print(f"{colors['Success']}[/] Intrusion résolue !{colors['Reset']}")
 
 
-def rand_resignation() -> None:
+def rand_resignation() -> None: # simulate a crew member resignation
     for spaceship in fleet.spaceships:
         if len(spaceship.crew) > 0:
             member = random.choice(spaceship.crew)
@@ -226,7 +226,7 @@ def rand_resignation() -> None:
             )
 
 
-def rand_mentalist_action() -> None:
+def rand_mentalist_action() -> None: # simulate a mentalist action
     for spaceship in fleet.spaceships:
         if len(spaceship.crew) > 1:
             mentalist = next(
@@ -240,7 +240,7 @@ def rand_mentalist_action() -> None:
                 print(mentalist.act(target))
 
 
-def rand_event(game_start: bool) -> None | bool:
+def rand_event(game_start: bool) -> None | bool: # simulate a random event and call the corresponding function
     if game_start is True:
         return False
     else:
@@ -249,7 +249,7 @@ def rand_event(game_start: bool) -> None | bool:
         event()
 
 
-def promote_technician() -> None:
+def promote_technician() -> None: # promote a technician to a pilot
     print("Promotion d'un technicien: \n")
     last_name = input("Nom du technicien à promouvoir : ")
     for spaceship in fleet.spaceships:
@@ -274,7 +274,7 @@ def promote_technician() -> None:
     )
 
 
-def crew_report() -> None:
+def crew_report() -> None: # display a report of the crew
     print("\nRapport de l'équipage: \n")
     total_members = sum(len(spaceship.crew) for spaceship in fleet.spaceships)
     print(f"Nombre total de membres d'équipage: {total_members}")
@@ -320,11 +320,11 @@ def crew_report() -> None:
         )
 
 
-def fleet_statistics() -> None:
+def fleet_statistics() -> None: # display statistics about the fleet ( stupid function but it's just for the example)
     print(fleet.statistics())
 
 
-def spaceship_statistics() -> None:
+def spaceship_statistics() -> None: # display statistics about the spaceships, the function is called by the stupid function above
     stats = [
         ["Nom du vaisseau", "Type", "Condition", "Nombre de membres", "Préparation"]
     ]
@@ -349,7 +349,7 @@ def spaceship_statistics() -> None:
         f"\n{colors['Menu']}Statistiques des vaisseaux:\n{'-' * 70}\n{table}{colors['Reset']}"
     )
 
-def add_spaceship() -> None:
+def add_spaceship() -> None: # add a spaceship to the fleet
     print("Ajout d'un vaisseau: \n")
     name = input("Nom du vaisseau : ")
     type = input("Type du vaisseau (transport/guerre/marchand) : ").lower()
@@ -361,7 +361,7 @@ def add_spaceship() -> None:
     except ValueError as e:
         print(f"{colors['Error']}[!] Erreur: {e}{colors['Reset']}")
 
-def recharge_mana() -> None:
+def recharge_mana() -> None: # reload the mana of a mentalist
     print("Recharger le mana d'un mentaliste: \n")
     last_name = input("Nom du mentaliste : ")
     for spaceship in fleet.spaceships:

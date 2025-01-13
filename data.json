@@ -219,30 +219,6 @@
                     "experience": null
                 }
             ]
-        },
-        {
-            "name": "super_maxi_vaisseau",
-            "type": "guerre",
-            "condition": "opérationnel",
-            "crew": []
-        },
-        {
-            "name": "test",
-            "type": "marchand",
-            "condition": "opérationnel",
-            "crew": []
-        },
-        {
-            "name": "zouzouzou",
-            "type": "marchand",
-            "condition": "opérationnel",
-            "crew": []
-        },
-        {
-            "name": "asasasas",
-            "type": "marchand",
-            "condition": "opérationnel",
-            "crew": []
         }
     ]
 }
