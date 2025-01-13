@@ -36,6 +36,54 @@ This project is a simulation of managing a galactic fleet. It includes functiona
 ## Data Persistence
 The fleet data is saved in `data.json`. The data includes the fleet name, spaceships, and crew members with their details. Feel free to add your own data.json to custom your fleet
 
+### JSON Structure
+The JSON file is structured as follows:
+- `name`: The name of the fleet.
+- `spaceships`: A list of spaceships in the fleet.
+  - `name`: The name of the spaceship.
+  - `type`: The type of the spaceship (e.g., transport, guerre, marchand).
+  - `condition`: The condition of the spaceship (e.g., opérationnel, endommagé).
+  - `crew`: A list of crew members on the spaceship.
+    - `first_name`: The first name of the crew member.
+    - `last_name`: The last name of the crew member.
+    - `gender`: The gender of the crew member.
+    - `age`: The age of the crew member.
+    - `role`: The role of the crew member (for `Operator`).
+    - `experience`: The experience level of the crew member (for `Operator`).
+    - `mana`: The mana level of the crew member (for `Mentalist`).
+
+### Example JSON
+```json
+{
+    "name": "Galactic Fleet",
+    "spaceships": [
+        {
+            "name": "Bayta",
+            "type": "Marchand",
+            "condition": "Opérationnel",
+            "crew": [
+                {
+                    "first_name": "Bel",
+                    "last_name": "Riose",
+                    "gender": "M",
+                    "age": 48,
+                    "role": "Commandant",
+                    "experience": null
+                },
+                {
+                    "first_name": "Gaal",
+                    "last_name": "Dornick",
+                    "gender": "F",
+                    "age": 34,
+                    "role": "Technicien",
+                    "experience": null
+                }
+            ]
+        }
+    ]
+}
+```
+
 ## Error Handling
 The application includes basic error handling to manage invalid inputs and file-related errors
 
