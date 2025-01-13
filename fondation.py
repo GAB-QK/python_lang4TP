@@ -162,5 +162,5 @@ class Fleet:
         for role, count in role_distribution.items():
             stats.append([f"Nombre de {role}", count])
 
-        table = "\n".join([f"{row[0]:<40} {row[1]}" for row in stats])
+        table = "\n".join([f"{colors['Success']}{row[0]:<40}{colors['Reset']} {row[1]}" for row in stats])
         return f"\n{colors['Menu']}Flotte {self.name} - Statistiques:\n{'-' * 70}\n{table}{colors['Reset']}"
