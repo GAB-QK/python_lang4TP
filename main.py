@@ -20,14 +20,13 @@ from crew import (
 from save import save_data, read_data
 
 
-def clear_terminal(): # clear terminal screen after each choice in the menu
+def clear_terminal():  # clear terminal screen after each choice in the menu
     os.system("cls" if os.name == "nt" else "clear")
-
 
 
 def Menu():
     global fleet
-    fleet = read_data('data.json')  # reload data from file
+    fleet = read_data("data.json")  # reload data from file
     choice = input(f"\nChoisissez une option: ")
     clear_terminal()
 
@@ -54,8 +53,10 @@ def Menu():
             case "10":
                 recharge_mana()
             case "11":
-                save_data(fleet, 'data.json')
-                print(f"{colors['Success']}[/] Données sauvegardées avec succès !{colors['Reset']}")
+                save_data(fleet, "data.json")
+                print(
+                    f"{colors['Success']}[/] Données sauvegardées avec succès !{colors['Reset']}"
+                )
             case "12":
                 quit()
             case _:
@@ -71,19 +72,23 @@ def Menu():
     clear_terminal()
 
 
-def signal_handler(sig, frame): # handle the signal when the user wants to quit the program and quit properly after saving the data
+def signal_handler(
+    sig, frame
+):  # handle the signal when the user wants to quit the program and quit properly after saving the data
     print(f"{colors['Warning']}\n[!] Vous avez quitté le programme.{colors['Reset']}")
-    save_data(fleet, 'data.json')
+    save_data(fleet, "data.json")
     print(f"{colors['Success']}[/] Données sauvegardées avec succès !{colors['Reset']}")
     sys.exit(0)
 
 
-signal.signal(signal.SIGINT, signal_handler) # handle the signal when the user wants to quit the program
+signal.signal(
+    signal.SIGINT, signal_handler
+)  # handle the signal when the user wants to quit the program
 
 
 def main():
     global fleet
-    fleet = read_data('data.json')
+    fleet = read_data("data.json")
     game_start = True
     event_counter = 0
     while True:
@@ -107,7 +112,7 @@ def main():
         # handle random events
         if event_counter == 4:
             game_start = rand_event(game_start)
-            event_counter = 0       
+            event_counter = 0
         else:
             event_counter += 1
 
